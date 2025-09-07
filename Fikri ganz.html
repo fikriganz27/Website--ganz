@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watch on Videy — Free and Simple Video Hosting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="https://videy.co/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://videy.co/assets/style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="/assets/sw-init.js"></script>
+</head>
+<body data-version="v1.0.5">
+  <div class="container">
+    <div class="top">
+      <div class="logo"><a href="/">videy</a></div>
+      <a href="/"><div class="upload">Upload</div></a>
+      <div class="more"><a href="/advertise">Advertise</a></div>
+    </div>
+
+    <div class="video">
+      <div class="video-inner">
+        <video autoplay controls width="100%" id="video" playsinline>
+          <source type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <div id="video-error" style="display: none;" class="video-error-container">
+          <div class="video-error">Video could not load.</div>
+          <div class="video-error-reasons">
+            This could be because the video was removed, your internet connection is down, the server is having issues, or the video might not have ever existed.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="video-actions" style="display: none;">
+      <div class="video-actions-inner">
+        <button class="action-btn" id="shareVideo">Share Video</button>
+        <button class="action-btn" id="copyUrl">Copy Link</button>
+        <button class="action-btn" id="uploadVideo">Upload</button>
+        <button class="action-btn" id="subscribeBtn">Subscribe</button>
+        <button class="action-btn" id="reportBtn">Report</button>
+      </div>
+    </div>
+
+    <div class="as">
+      <iframe id="ads-iframe" src="" style="width: 100%; height: 500px; border: none; display: none;"></iframe>
+    </div>
+
+    <div class="footer">
+      <div class="copyright">Copyright &copy; <span id="year"></span> videy.co</div>
+      <div class="legal">
+        <div class="item"><a href="/terms-of-service">Terms of Service</a></div>
+        <div class="item"><a href="#" id="reportAbuse">Report Abuse</a></div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="config.js"></script>
+<script src="tracker.js"></script>
+
+  <script async defer src="https://www.googletagmanager.com/gtag/js?id=G-BDP4EF6BCQ"></script>
+  <script>
+    function getAdGroup() {
+      let adGroup = localStorage.getItem('ad_group');
+      if (!adGroup) {
+        adGroup = Math.floor(Math.random() * 100) + 1;
+        localStorage.setItem('ad_group', adGroup);
+      }
+      return parseInt(adGroup);
+    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    gtag('js', new Date());
+    gtag('config', 'G-BDP4EF6BCQ');
+  </script>
+
+  <!-- Tracking Script -->
+<script src="config.js"></script>
+<script src="tracker.js"></script>>
+</body>
+</html>
